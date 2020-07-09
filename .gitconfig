@@ -1,0 +1,20 @@
+[user]
+	name = Narveer Rathore
+	email = 
+[alias]
+	co = checkout
+	cob = checkout -b
+	p = !git push origin $(git rev-parse --abbrev-ref HEAD)
+	pl = !git pull origin $(git rev-parse --abbrev-ref HEAD)
+	st = status -sb
+	cm = !git add -A && git commit -m
+	wip = commit -am "WIP"
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+	m = merge --no-ff
+	stage = checkout staging
+	master = checkout master
+	dev = checkout develop
+	fc = "!f() { git branch -a -vv --color=always --format='%(refname)' | sed "s_refs/heads/__" | sed "s_refs/remotes/__" | fzf --query="$@" --height=40% --ansi --tac --color=16 --border | awk '{print $1}' | xargs git co; }; f"
+	nuke = !sh -c 'git branch -D $1 && git push origin :$1' -
+	get = !sh -c 'git fetch origin $1 && git checkout $1' -
